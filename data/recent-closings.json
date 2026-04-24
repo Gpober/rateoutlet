@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "propertyType": "Single Family Home",
+    "location": "Miami, FL",
+    "loanAmount": "$475,000",
+    "term": "30 Yrs Fixed"
+  },
+  {
+    "id": 2,
+    "propertyType": "Condo",
+    "location": "Fort Lauderdale, FL",
+    "loanAmount": "$325,000",
+    "term": "15 Yrs Fixed"
+  },
+  {
+    "id": 3,
+    "propertyType": "Multi Family Home",
+    "location": "Hollywood, FL",
+    "loanAmount": "$1,250,000",
+    "term": "30 Yrs Fixed"
+  },
+  {
+    "id": 4,
+    "propertyType": "Single Family Home",
+    "location": "Boca Raton, FL",
+    "loanAmount": "$780,000",
+    "term": "30 Yrs Fixed"
+  }
+]
