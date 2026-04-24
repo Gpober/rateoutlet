@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FFFFFF;
+  --bg-muted: #F5F7FA;
+  --bg-dark: #0B1F3A;
+  --fg: #0F172A;
+  --fg-muted: #475569;
+  --border: #E2E8F0;
+  --primary: #0B2F66;
+  --primary-hover: #08234E;
+  --accent: #D32F2F;
+  --accent-hover: #B71C1C;
+  --accent-soft: #FDECEC;
+  --success: #16A34A;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 4px 24px rgba(11, 31, 58, 0.06);
+  --shadow-lift: 0 12px 40px rgba(11, 31, 58, 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-ui-fg antialiased;
+    background-color: var(--bg);
+  }
+}
+
+@keyframes accordion-down {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+
+@layer components {
+  .container-main {
+    @apply max-w-container mx-auto px-6 md:px-12;
+  }
+  .section-pad {
+    @apply py-14 md:py-24;
+  }
+  .eyebrow {
+    @apply text-[12px] font-semibold uppercase tracking-eyebrow text-accent;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-md;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200;
+  }
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border-2 border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-all duration-200;
+  }
+}
