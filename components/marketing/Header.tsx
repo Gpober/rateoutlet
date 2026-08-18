@@ -2,21 +2,26 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Phone, Mail, Menu, X, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { SITE, NAV_LINKS } from '@/lib/site'
 
-const NAV_LINKS = [
-  { label: 'Buy A Home', href: '#loan-products' },
-  { label: 'Refinance', href: '#loan-products' },
-  { label: "Today's Rates", href: '#rates' },
-  { label: 'Loan Products', href: '#loan-products' },
-  { label: 'Contact', href: '#contact' },
-]
+function Wordmark({ className }: { className?: string }) {
+  return (
+    <span className={cn('font-bold tracking-tight', className)}>
+      <span className="text-primary">The </span>
+      <span className="text-accent-deep">Rate</span>
+      <span className="text-primary"> Outlet</span>
+    </span>
+  )
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -24,10 +29,11 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [mobileOpen])
 
   return (
@@ -39,23 +45,25 @@ export function Header() {
         )}
       >
         {/* Utility bar */}
-        <div className="bg-section-muted border-b border-ui-border hidden md:block">
+        <div className="bg-primary hidden md:block">
           <div className="container-main h-9 flex items-center justify-between">
-            <span className="text-[13px] text-ui-muted">NMLS #1017196 · Licensed in FL</span>
-            <div className="flex items-center gap-5">
+            <span className="text-[12.5px] text-white/70 tracking-wide">
+              NMLS #{SITE.nmls} · {SITE.license} · Since {SITE.founded}
+            </span>
+            <div className="flex items-center gap-6">
               <a
-                href="tel:3054409201"
-                className="flex items-center gap-1.5 text-[13px] text-ui-muted hover:text-primary transition-colors"
+                href={SITE.phoneHref}
+                className="flex items-center gap-1.5 text-[12.5px] text-white/80 hover:text-accent transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
-                (305) 440-9201
+                {SITE.phone}
               </a>
               <a
-                href="mailto:info@therateoutlet.com"
-                className="flex items-center gap-1.5 text-[13px] text-ui-muted hover:text-primary transition-colors"
+                href={`mailto:${SITE.email}`}
+                className="flex items-center gap-1.5 text-[12.5px] text-white/80 hover:text-accent transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
-                info@therateoutlet.com
+                {SITE.email}
               </a>
             </div>
           </div>
@@ -63,45 +71,43 @@ export function Header() {
 
         {/* Main nav */}
         <div className="border-b border-ui-border">
-          <div className="container-main h-20 flex items-center justify-between gap-8">
-            {/* Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center gap-1">
-              <span className="text-[22px] font-bold tracking-tight">
-                <span className="text-primary">The </span>
-                <span className="text-accent">Rate</span>
-                <span className="text-primary"> Outlet</span>
-              </span>
+          <div className="container-main h-[72px] flex items-center justify-between gap-8">
+            <Link href="/" className="flex-shrink-0">
+              <Wordmark className="text-[22px]" />
             </Link>
 
-            {/* Desktop nav links */}
-            <nav className="hidden lg:flex items-center gap-7">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-[15px] font-medium text-ui-fg hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="hidden lg:flex items-center gap-8">
+              {NAV_LINKS.map((link) => {
+                const active = pathname === link.href
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={cn(
+                      'relative text-[15px] font-medium transition-colors py-1',
+                      active ? 'text-primary' : 'text-ui-fg hover:text-primary'
+                    )}
+                  >
+                    {link.label}
+                    {active && (
+                      <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-accent rounded-full" />
+                    )}
+                  </Link>
+                )
+              })}
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="#rates"
-                className="text-[15px] font-medium text-primary hover:text-primary-hover transition-colors"
-              >
-                Today&apos;s Rates
-              </Link>
-              <a href="#contact" className="btn-primary h-11 px-6 text-[14px]">
-                Free Quote
+            <div className="hidden lg:flex items-center gap-4">
+              <a href={SITE.phoneHref} className="text-[15px] font-semibold text-primary">
+                {SITE.phone}
               </a>
+              <Link href="/contact" className="btn-gold h-11 px-6 text-[14px]">
+                Get My Rate
+              </Link>
             </div>
 
-            {/* Mobile hamburger */}
             <button
-              className="lg:hidden p-2 -mr-2 text-ui-fg hover:text-primary transition-colors"
+              className="lg:hidden p-2 -mr-2 text-primary"
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
@@ -132,13 +138,8 @@ export function Header() {
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
               className="fixed right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white z-50 flex flex-col shadow-lift"
             >
-              {/* Drawer header */}
-              <div className="flex items-center justify-between px-6 h-20 border-b border-ui-border">
-                <span className="text-[20px] font-bold">
-                  <span className="text-primary">The </span>
-                  <span className="text-accent">Rate</span>
-                  <span className="text-primary"> Outlet</span>
-                </span>
+              <div className="flex items-center justify-between px-6 h-[72px] border-b border-ui-border">
+                <Wordmark className="text-[20px]" />
                 <button
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"
@@ -148,16 +149,14 @@ export function Header() {
                 </button>
               </div>
 
-              {/* Prominent phone CTA */}
               <a
-                href="tel:3054409201"
-                className="flex items-center gap-3 mx-4 mt-4 p-4 bg-accent text-white rounded-lg font-semibold text-[15px]"
+                href={SITE.phoneHref}
+                className="flex items-center gap-3 mx-4 mt-4 p-4 bg-primary text-white rounded-lg font-semibold text-[15px]"
               >
-                <Phone className="w-5 h-5 flex-shrink-0" />
-                (305) 440-9201
+                <Phone className="w-5 h-5 flex-shrink-0 text-accent" />
+                {SITE.phone}
               </a>
 
-              {/* Nav links */}
               <nav className="flex flex-col px-4 mt-4 gap-0.5">
                 {NAV_LINKS.map((link) => (
                   <Link
@@ -172,16 +171,17 @@ export function Header() {
                 ))}
               </nav>
 
-              {/* Bottom CTA */}
               <div className="p-4 mt-auto border-t border-ui-border">
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center w-full py-4 bg-primary text-white font-bold rounded-pill text-[16px] hover:bg-primary-hover transition-colors"
+                  className="btn-gold w-full py-4 text-[16px]"
                 >
-                  Get Free Quote
-                </a>
-                <p className="text-center text-[12px] text-ui-muted mt-3">NMLS #1017196 · Licensed in FL</p>
+                  Get My Rate
+                </Link>
+                <p className="text-center text-[12px] text-ui-muted mt-3">
+                  NMLS #{SITE.nmls} · {SITE.license}
+                </p>
               </div>
             </motion.div>
           </>

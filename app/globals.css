@@ -4,25 +4,25 @@
 
 :root {
   --bg: #FFFFFF;
-  --bg-muted: #F5F7FA;
-  --bg-dark: #0B1F3A;
-  --fg: #0F172A;
-  --fg-muted: #475569;
-  --border: #E2E8F0;
-  --primary: #0B2F66;
-  --primary-hover: #08234E;
-  --accent: #D32F2F;
-  --accent-hover: #B71C1C;
-  --accent-soft: #FDECEC;
-  --success: #16A34A;
+  --bg-muted: #F6F7F9;
+  --bg-dark: #081B33;
+  --fg: #0E1B2A;
+  --fg-muted: #5A6B7B;
+  --border: #E4E8ED;
+  --primary: #0A2540;
+  --primary-hover: #06192E;
+  --accent: #C6A15B;
+  --accent-hover: #AC863E;
+  --accent-soft: #F6EFDF;
+  --success: #15803D;
 
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
   --radius-pill: 999px;
 
-  --shadow-card: 0 4px 24px rgba(11, 31, 58, 0.06);
-  --shadow-lift: 0 12px 40px rgba(11, 31, 58, 0.12);
+  --shadow-card: 0 4px 24px rgba(10, 37, 64, 0.06);
+  --shadow-lift: 0 18px 50px rgba(10, 37, 64, 0.14);
 }
 
 @layer base {
@@ -49,18 +49,55 @@
     @apply max-w-container mx-auto px-6 md:px-12;
   }
   .section-pad {
-    @apply py-14 md:py-24;
+    @apply py-14 md:py-20;
   }
   .eyebrow {
-    @apply text-[12px] font-semibold uppercase tracking-eyebrow text-accent;
+    @apply inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-eyebrow text-accent-deep;
   }
+  .eyebrow::before {
+    content: '';
+    @apply block w-6 h-px bg-accent;
+  }
+  /* Primary CTA — deep navy, confident and trustworthy */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-primary text-white font-semibold text-sm hover:bg-primary-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-lift;
+  }
+  /* Gold CTA — the hero highlight */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-accent text-primary font-semibold text-sm hover:bg-accent-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-gold;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border border-primary/25 text-primary font-semibold text-sm hover:border-primary hover:bg-primary hover:text-white transition-all duration-200;
   }
   .btn-outline-white {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border-2 border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border border-white/40 text-white font-semibold text-sm hover:bg-white hover:text-primary transition-all duration-200;
+  }
+  .card {
+    @apply bg-white rounded-lg border border-ui-border shadow-card;
+  }
+}
+
+/* Scroll reveal — visible by default; the `.js` class (added in layout.tsx
+   before paint) enables the fade-up so no-JS users and crawlers still see
+   all content. */
+.reveal-item {
+  opacity: 1;
+}
+.js .reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js .reveal-item.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
