@@ -9,24 +9,26 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0B2F66',
-          hover: '#08234E',
+          DEFAULT: '#0A2540', // deep navy
+          hover: '#06192E',
+          light: '#123A63',
         },
         accent: {
-          DEFAULT: '#D32F2F',
-          hover: '#B71C1C',
-          soft: '#FDECEC',
+          DEFAULT: '#C6A15B', // gold
+          hover: '#AC863E',
+          soft: '#F6EFDF',
+          deep: '#8A6D2E',
         },
         section: {
-          muted: '#F5F7FA',
-          dark: '#0B1F3A',
+          muted: '#F6F7F9',
+          dark: '#081B33',
         },
         ui: {
-          border: '#E2E8F0',
-          fg: '#0F172A',
-          muted: '#475569',
+          border: '#E4E8ED',
+          fg: '#0E1B2A',
+          muted: '#5A6B7B',
         },
-        success: '#16A34A',
+        success: '#15803D',
       },
       borderRadius: {
         sm: '8px',
@@ -35,8 +37,9 @@ module.exports = {
         pill: '999px',
       },
       boxShadow: {
-        card: '0 4px 24px rgba(11, 31, 58, 0.06)',
-        lift: '0 12px 40px rgba(11, 31, 58, 0.12)',
+        card: '0 4px 24px rgba(10, 37, 64, 0.06)',
+        lift: '0 18px 50px rgba(10, 37, 64, 0.14)',
+        gold: '0 10px 30px rgba(198, 161, 91, 0.28)',
       },
       maxWidth: {
         container: '1200px',
@@ -46,7 +49,7 @@ module.exports = {
         display: ['var(--font-fraunces)', 'Georgia', 'serif'],
       },
       letterSpacing: {
-        eyebrow: '0.14em',
+        eyebrow: '0.16em',
       },
       keyframes: {
         'accordion-down': {
