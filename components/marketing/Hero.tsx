@@ -36,13 +36,13 @@ export function Hero() {
 
             <h1 className="font-display text-[42px] md:text-[56px] xl:text-[64px] leading-[1.04] tracking-[-0.02em] mb-6">
               Higher expectations.<br />
-              <span className="text-accent">Lower rates.</span><br />
+              <span className="text-accent">Competitive rates.</span><br />
               Zero time wasted.
             </h1>
 
             <p className="text-[17px] leading-[1.65] text-white/70 mb-8 max-w-lg">
-              We&apos;re a broker, not a bank — so we shop dozens of lenders and hand you the
-              best deal. Over 10,000 South Florida families financed, with closings in as
+              We&apos;re a broker, not a bank — so we shop dozens of lenders and bring you the
+              strongest options we find. Over 10,000 South Florida families financed, with closings in as
               little as 14 days.
             </p>
 
@@ -80,7 +80,7 @@ export function Hero() {
               </p>
               <div className="space-y-5">
                 {[
-                  { icon: TrendingDown, stat: 'Rates from 3%', label: 'Shopped across dozens of lenders' },
+                  { icon: TrendingDown, stat: 'Dozens of lenders', label: 'Shopped for competitive rates' },
                   { icon: Clock, stat: '14–21 days', label: 'Average time to close' },
                   { icon: ShieldCheck, stat: '$0 hidden fees', label: 'Transparent pricing, always' },
                 ].map((item) => (

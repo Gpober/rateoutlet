@@ -8,12 +8,12 @@ import { PROGRAMS } from '@/lib/programs'
 export const metadata = {
   title: 'Loan Programs — Purchase, Refinance & HELOC',
   description:
-    'Explore The Rate Outlet’s mortgage programs: home purchase loans, refinancing, and HELOCs — all shopped across dozens of lenders for the lowest rate.',
+    'Explore The Rate Outlet’s mortgage programs: home purchase loans, refinancing, and HELOCs — all shopped across dozens of lenders for competitive rates.',
 }
 
 const STEPS = [
   { icon: FileText, title: 'Tell us your goal', body: 'A quick call or form — no credit pull, no pressure. We learn what you’re after.' },
-  { icon: Search, title: 'We shop it for you', body: 'We compare dozens of lenders and bring back the best rate and structure for your situation.' },
+  { icon: Search, title: 'We shop it for you', body: 'We compare dozens of lenders and bring back competitive options structured for your situation.' },
   { icon: KeyRound, title: 'Close and get keys', body: 'One broker guides you to the closing table — often in as little as 14 days.' },
 ]
 
@@ -65,7 +65,7 @@ export default function LoanProgramsPage() {
           <Reveal className="max-w-2xl mb-12">
             <p className="eyebrow mb-4">How it works</p>
             <h2 className="font-display text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-primary">
-              Three simple steps to a lower rate
+              Three simple steps to the right loan
             </h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5">

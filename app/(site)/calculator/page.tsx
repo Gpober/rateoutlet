@@ -14,7 +14,7 @@ export default function CalculatorPage() {
       <PageHeader
         eyebrow="Free Tool"
         title="Mortgage payment calculator"
-        subtitle="Move the sliders to see how price, down payment, rate, and term shape your monthly payment. Then let us shop dozens of lenders to beat the rate you plugged in."
+        subtitle="Move the sliders to see how price, down payment, rate, and term shape your monthly payment. Then let us shop dozens of lenders for a competitive rate on your actual numbers."
       />
       <section className="section-pad">
         <div className="container-main">

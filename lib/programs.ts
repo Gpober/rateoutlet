@@ -13,10 +13,10 @@ export const PROGRAMS: Program[] = [
     name: 'Buy a Home',
     tagline: 'Purchase loans',
     description:
-      'From first-time buyer to move-up or investment property — we match you to the loan that fits, then shop it hard for the lowest rate.',
+      'From first-time buyer to move-up or investment property — we match you to the loan that fits, then shop it across dozens of lenders for a competitive rate.',
     highlights: [
       'Conventional, FHA, VA & jumbo',
-      'Down payments as low as 3%',
+      'Low-down-payment options',
       'First-time buyer programs',
       'Pre-approvals in 24 hours',
     ],
