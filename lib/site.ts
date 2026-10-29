@@ -4,8 +4,8 @@ export const SITE = {
   // Canonical production origin (no trailing slash). Used for metadataBase,
   // Open Graph, JSON-LD, sitemap and robots.
   url: 'https://therateoutletmortgage.com',
-  nmls: '1017196',
-  nmlsUrl: 'https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1017196',
+  nmls: '2013978',
+  nmlsUrl: 'https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2013978',
   phone: '(305) 440-9201',
   phoneHref: 'tel:3054409201',
   phoneE164: '+13054409201',

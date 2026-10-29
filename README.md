@@ -1,6 +1,6 @@
 # The Rate Outlet — marketing site
 
-Next.js 14 (App Router) marketing site for The Rate Outlet, NMLS #1017196, at
+Next.js 14 (App Router) marketing site for The Rate Outlet, NMLS #2013978, at
 https://therateoutletmortgage.com.
 
 ```bash
