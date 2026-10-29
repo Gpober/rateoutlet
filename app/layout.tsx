@@ -20,7 +20,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'The Rate Outlet — Competitive Mortgage Rates, Shopped Across Dozens of Lenders | NMLS #1017196',
+    default: 'The Rate Outlet — Competitive Mortgage Rates, Shopped Across Dozens of Lenders | NMLS #2013978',
     template: '%s | The Rate Outlet',
   },
   description:
