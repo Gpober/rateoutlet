@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Fraunces } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/marketing/Header'
-import { Footer } from '@/components/marketing/Footer'
+import { AttributionTracker } from '@/components/marketing/Attribution'
+import { SITE } from '@/lib/site'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,21 +18,21 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://therateoutlet.com'),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: 'The Rate Outlet — Lowest Mortgage Rates in South Florida | NMLS #1017196',
+    default: 'The Rate Outlet — Competitive Mortgage Rates, Shopped Across Dozens of Lenders | NMLS #1017196',
     template: '%s | The Rate Outlet',
   },
   description:
     "South Florida's leading mortgage broker since 2010. 14–21 day closings, zero hidden fees, and rates we shop across dozens of lenders. 10,000+ clients served.",
   keywords:
-    'mortgage broker, South Florida, home loan, refinance, HELOC, lowest mortgage rates, Miami mortgage, mortgage calculator',
+    'mortgage broker, South Florida, home loan, refinance, HELOC, competitive mortgage rates, Miami mortgage, mortgage calculator',
   openGraph: {
-    title: 'The Rate Outlet — Lowest Mortgage Rates in South Florida',
+    title: 'The Rate Outlet — Competitive Mortgage Rates, Shopped Across Dozens of Lenders',
     description:
-      'Higher expectations. Lower rates. Zero time wasted. Purchase, refinance, HELOC — we shop dozens of lenders for you.',
-    url: 'https://therateoutlet.com',
-    siteName: 'The Rate Outlet',
+      'Higher expectations. Competitive rates. Zero time wasted. Purchase, refinance, HELOC — we shop dozens of lenders for you.',
+    url: SITE.url,
+    siteName: SITE.name,
     locale: 'en_US',
     type: 'website',
   },
@@ -53,23 +53,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': ['LocalBusiness', 'MortgageBroker'],
-              name: 'The Rate Outlet',
+              name: SITE.name,
               description: "South Florida's leading mortgage broker since 2010.",
-              url: 'https://therateoutlet.com',
-              telephone: '+13054409201',
-              email: 'info@therateoutlet.com',
-              foundingDate: '2010',
+              url: SITE.url,
+              telephone: SITE.phoneE164,
+              email: SITE.email,
+              foundingDate: String(SITE.founded),
               areaServed: 'South Florida',
-              identifier: { '@type': 'PropertyValue', name: 'NMLS', value: '1017196' },
+              identifier: { '@type': 'PropertyValue', name: 'NMLS', value: SITE.nmls },
               aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: '10000' },
             }),
           }}
         />
       </head>
       <body>
-        <Header />
-        <main className="pt-[72px] md:pt-[108px]">{children}</main>
-        <Footer />
+        <AttributionTracker />
+        {children}
       </body>
     </html>
   )

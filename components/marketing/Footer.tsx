@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Phone, Mail, Clock, Facebook, Instagram, Linkedin } from 'lucide-react'
 import { SITE } from '@/lib/site'
+import { ComplianceBlock, NmlsLink } from './Compliance'
 
 const LOAN_LINKS = [
   { label: 'Buy a Home', href: '/loan-programs#purchase' },
@@ -12,6 +13,7 @@ const LOAN_LINKS = [
 const COMPANY_LINKS = [
   { label: 'About Us', href: '/about' },
   { label: 'Loan Programs', href: '/loan-programs' },
+  { label: 'Realtor Partners', href: '/realtors' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -107,34 +109,7 @@ export function Footer() {
 
       {/* Compliance block */}
       <div className="border-b border-white/10 py-8">
-        <div className="container-main">
-          <div className="flex items-center gap-3 mb-4 justify-center">
-            <div className="w-8 h-8 border border-white/25 rounded flex items-center justify-center flex-shrink-0" title="Equal Housing Opportunity">
-              <span className="text-white text-[9px] font-bold">EHO</span>
-            </div>
-            <span className="text-[12px] text-white/60 font-medium">Equal Housing Opportunity</span>
-          </div>
-          <div className="text-center space-y-2 max-w-3xl mx-auto">
-            <p className="text-[12px] text-white/50 leading-[1.6]">
-              <strong className="text-white/80">{SITE.name} · NMLS #{SITE.nmls}</strong> · {SITE.license}.
-            </p>
-            <p className="text-[12px] text-white/50 leading-[1.6]">
-              MORTGAGE BROKER. We arrange, but do not make, mortgage loans. Loans are subject to credit
-              approval. Programs, rates, and terms are subject to change without notice.
-            </p>
-            <p className="text-[12px] text-white/50">
-              Verify our license at{' '}
-              <a
-                href="https://www.nmlsconsumeraccess.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:underline"
-              >
-                nmlsconsumeraccess.org
-              </a>
-            </p>
-          </div>
-        </div>
+        <ComplianceBlock />
       </div>
 
       {/* Bottom bar */}
@@ -144,7 +119,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link href="/contact" className="hover:text-white/70 transition-colors">Contact</Link>
             <span className="text-white/20">·</span>
-            <span>NMLS #{SITE.nmls}</span>
+            <NmlsLink className="hover:text-white/70 transition-colors" />
           </div>
         </div>
       </div>

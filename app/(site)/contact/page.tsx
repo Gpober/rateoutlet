@@ -14,7 +14,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Free Quote"
-        title="Let’s find your best rate"
+        title="Let’s find the right loan for you"
         subtitle="Tell us a little about your goal and a broker will follow up with real numbers — no cost, no obligation, no credit impact."
       />
 
@@ -66,7 +66,12 @@ export default function ContactPage() {
                 A quote is just information. We&apos;ll show you the numbers and let you decide — even if
                 the answer is “not yet.”
               </p>
-              <p className="text-[12px] text-ui-muted mt-4">NMLS #{SITE.nmls} · {SITE.license}</p>
+              <p className="text-[12px] text-ui-muted mt-4">
+                <a href={SITE.nmlsUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-primary">
+                  NMLS #{SITE.nmls}
+                </a>{' '}
+                · {SITE.regulator}
+              </p>
             </div>
           </div>
 

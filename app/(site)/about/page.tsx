@@ -9,7 +9,7 @@ import closings from '@/data/recent-closings.json'
 export const metadata = {
   title: 'About Us',
   description:
-    'The Rate Outlet has been South Florida’s trusted mortgage broker since 2010 — 10,000+ families financed with lower rates and honest guidance.',
+    'The Rate Outlet has been South Florida’s trusted mortgage broker since 2010 — 10,000+ families financed with competitive rates and honest guidance.',
 }
 
 const VALUES = [
@@ -39,7 +39,7 @@ export default function AboutPage() {
               <p>
                 Since {SITE.founded}, we&apos;ve helped South Floridians buy their first homes, refinance
                 into lower payments, and put their equity to work. As a broker, we compare dozens of
-                lenders on every file — so you get a rate no single bank can match.
+                lenders on every file — so you see more options than any single bank can offer.
               </p>
               <p>
                 No call-center runaround, no surprise fees at closing. Just one dedicated broker who

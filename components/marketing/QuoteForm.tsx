@@ -1,102 +1,113 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
-import { Check, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+import { FormDisclosures } from './Compliance'
+import {
+  FormError,
+  FormSuccess,
+  HiddenLeadFields,
+  InquiryNotice,
+  MarketingConsent,
+  inputCls,
+  labelCls,
+  useLeadSubmit,
+} from './LeadFormParts'
 
-const LOAN_TYPES = ['Purchase', 'Refinance', 'HELOC'] as const
+export const LOAN_TYPES = ['Purchase', 'Refinance', 'HELOC'] as const
+export type LoanType = (typeof LOAN_TYPES)[number]
 const CREDIT = ['Excellent (740+)', 'Good (680–739)', 'Fair (620–679)', 'Not sure'] as const
 
-const inputCls =
-  'w-full rounded-md border border-ui-border bg-white px-4 py-3 text-[15px] text-ui-fg placeholder:text-ui-muted/70 outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition'
-const labelCls = 'block text-[13px] font-medium text-ui-fg mb-1.5'
-
-export function QuoteForm() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setStatus('submitting')
-    // Design-only: simulate a submission. Wire this up later (e.g. Resend email
-    // or a CRM webhook) via a server action — see app/actions.ts for a stub.
-    await new Promise((r) => setTimeout(r, 800))
-    setStatus('success')
-  }
+export function QuoteForm({
+  variant = 'full',
+  loanType,
+  program,
+  formName = 'contact',
+  submitLabel = 'Get My Free Quote',
+}: {
+  /** `short` drops loan amount, credit and comments for campaign landing pages. */
+  variant?: 'full' | 'short'
+  /** Preset loan type; when set on the short form the selector is hidden. */
+  loanType?: LoanType
+  /** Campaign program context, e.g. "FHA" or "First-time buyer". */
+  program?: string
+  formName?: string
+  submitLabel?: string
+}) {
+  const { status, error, handleSubmit } = useLeadSubmit('Quote')
+  const short = variant === 'short'
 
   if (status === 'success') {
     return (
-      <div className="card p-8 md:p-10 text-center">
-        <div className="w-14 h-14 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-5">
-          <Check className="w-7 h-7 text-success" />
-        </div>
-        <h3 className="font-display text-[26px] text-primary mb-2">Thanks — we’ve got it.</h3>
-        <p className="text-[15px] text-ui-muted max-w-md mx-auto">
-          A broker will reach out shortly with your personalized options. Need us sooner? Call{' '}
-          <a href="tel:3054409201" className="text-primary font-semibold">
-            (305) 440-9201
-          </a>
-          .
-        </p>
-      </div>
+      <FormSuccess
+        title="Thanks — we’ve got it."
+        body="A broker will reach out shortly with your personalized options."
+      />
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="card p-6 md:p-8">
-      {/* Honeypot */}
-      <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+      <HiddenLeadFields formName={formName} />
+      {program && <input type="hidden" name="program" value={program} readOnly />}
+      {short && loanType && <input type="hidden" name="loanType" value={loanType} readOnly />}
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelCls}>First name *</label>
-          <input required name="firstName" className={inputCls} placeholder="Jane" />
+          <label htmlFor={`${formName}-firstName`} className={labelCls}>First name *</label>
+          <input id={`${formName}-firstName`} required name="firstName" autoComplete="given-name" className={inputCls} placeholder="Jane" />
         </div>
         <div>
-          <label className={labelCls}>Last name *</label>
-          <input required name="lastName" className={inputCls} placeholder="Doe" />
+          <label htmlFor={`${formName}-lastName`} className={labelCls}>Last name *</label>
+          <input id={`${formName}-lastName`} required name="lastName" autoComplete="family-name" className={inputCls} placeholder="Doe" />
         </div>
         <div>
-          <label className={labelCls}>Email *</label>
-          <input required type="email" name="email" className={inputCls} placeholder="jane@email.com" />
+          <label htmlFor={`${formName}-email`} className={labelCls}>Email *</label>
+          <input id={`${formName}-email`} required type="email" name="email" autoComplete="email" className={inputCls} placeholder="jane@email.com" />
         </div>
         <div>
-          <label className={labelCls}>Phone *</label>
-          <input required type="tel" name="phone" className={inputCls} placeholder="(305) 555-0100" />
+          <label htmlFor={`${formName}-phone`} className={labelCls}>Phone *</label>
+          <input id={`${formName}-phone`} required type="tel" name="phone" autoComplete="tel" className={inputCls} placeholder="(305) 555-0100" />
         </div>
-        <div>
-          <label className={labelCls}>Loan type</label>
-          <select name="loanType" className={inputCls} defaultValue="Purchase">
-            {LOAN_TYPES.map((t) => (
-              <option key={t}>{t}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className={labelCls}>Credit</label>
-          <select name="credit" className={inputCls} defaultValue={CREDIT[1]}>
-            {CREDIT.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
-        </div>
+        {!(short && loanType) && (
+          <div className={short ? 'sm:col-span-2' : undefined}>
+            <label htmlFor={`${formName}-loanType`} className={labelCls}>Loan type</label>
+            <select id={`${formName}-loanType`} name="loanType" className={inputCls} defaultValue={loanType ?? 'Purchase'}>
+              {LOAN_TYPES.map((t) => (
+                <option key={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+        )}
+        {!short && (
+          <div>
+            <label htmlFor={`${formName}-credit`} className={labelCls}>Credit</label>
+            <select id={`${formName}-credit`} name="credit" className={inputCls} defaultValue={CREDIT[1]}>
+              {CREDIT.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
-      <div className="mt-5">
-        <label className={labelCls}>Loan amount</label>
-        <input name="loanAmount" className={inputCls} placeholder="$400,000" />
-      </div>
+      {!short && (
+        <>
+          <div className="mt-5">
+            <label htmlFor={`${formName}-loanAmount`} className={labelCls}>Loan amount</label>
+            <input id={`${formName}-loanAmount`} name="loanAmount" className={inputCls} placeholder="$400,000" />
+          </div>
 
-      <div className="mt-5">
-        <label className={labelCls}>Anything we should know?</label>
-        <textarea name="comments" rows={3} className={`${inputCls} resize-none`} placeholder="Timeline, property type, questions…" />
-      </div>
+          <div className="mt-5">
+            <label htmlFor={`${formName}-comments`} className={labelCls}>Anything we should know?</label>
+            <textarea id={`${formName}-comments`} name="comments" rows={3} className={`${inputCls} resize-none`} placeholder="Timeline, property type, questions…" />
+          </div>
+        </>
+      )}
 
-      <label className="flex items-start gap-2.5 mt-5 text-[13px] text-ui-muted leading-[1.5] cursor-pointer">
-        <input type="checkbox" name="consent" className="mt-0.5 accent-primary" defaultChecked />
-        <span>
-          I agree to be contacted by The Rate Outlet about my inquiry. This is not a loan application
-          and has no impact on my credit.
-        </span>
-      </label>
+      <MarketingConsent />
+      <InquiryNotice />
+
+      {error && <FormError message={error} />}
 
       <button
         type="submit"
@@ -108,9 +119,11 @@ export function QuoteForm() {
             <Loader2 className="w-4 h-4 animate-spin" /> Sending…
           </>
         ) : (
-          'Get My Free Quote'
+          submitLabel
         )}
       </button>
+
+      <FormDisclosures />
     </form>
   )
 }
