@@ -9,13 +9,8 @@ import { cn } from '@/lib/utils'
 import { SITE, NAV_LINKS } from '@/lib/site'
 
 function Wordmark({ className }: { className?: string }) {
-  return (
-    <span className={cn('font-bold tracking-tight', className)}>
-      <span className="text-primary">The </span>
-      <span className="text-accent-deep">Rate</span>
-      <span className="text-primary"> Outlet</span>
-    </span>
-  )
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/logo.svg" alt="The Rate Outlet" className={cn('w-auto', className)} />
 }
 
 export function Header() {
@@ -73,7 +68,7 @@ export function Header() {
         <div className="border-b border-ui-border">
           <div className="container-main h-[72px] flex items-center justify-between gap-8">
             <Link href="/" className="flex-shrink-0">
-              <Wordmark className="text-[22px]" />
+              <Wordmark className="h-9 md:h-10" />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
@@ -139,7 +134,7 @@ export function Header() {
               className="fixed right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white z-50 flex flex-col shadow-lift"
             >
               <div className="flex items-center justify-between px-6 h-[72px] border-b border-ui-border">
-                <Wordmark className="text-[20px]" />
+                <Wordmark className="h-8" />
                 <button
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"

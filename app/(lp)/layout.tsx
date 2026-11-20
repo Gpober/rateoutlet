@@ -9,11 +9,8 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
     <>
       <header className="bg-white border-b border-ui-border">
         <div className="container-main h-[68px] flex items-center justify-between gap-4">
-          <span className="font-bold tracking-tight text-[20px] md:text-[22px]">
-            <span className="text-primary">The </span>
-            <span className="text-accent-deep">Rate</span>
-            <span className="text-primary"> Outlet</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.svg" alt="The Rate Outlet" className="h-8 md:h-9 w-auto" />
           <a href={SITE.phoneHref} className="btn-primary h-10 px-4 md:px-5 text-[14px]">
             <Phone className="w-4 h-4" />
             <span className="hidden sm:inline">{SITE.phone}</span>

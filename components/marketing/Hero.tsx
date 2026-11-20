@@ -1,7 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Star, Clock, TrendingDown, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Clock, TrendingDown, ShieldCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -9,6 +10,16 @@ const ease = [0.22, 1, 0.36, 1] as const
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-white">
+      {/* The South Florida coastline from the original therateoutlet.com, under a navy wash */}
+      <Image
+        src="/images/hero-beach.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/55 pointer-events-none" />
       {/* Ambient gold glow */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-accent/15 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[420px] h-[420px] rounded-full bg-accent/10 blur-3xl pointer-events-none" />
@@ -30,13 +41,13 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill border border-accent/30 bg-white/5 text-accent text-[12px] font-semibold uppercase tracking-eyebrow mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill border border-accent/30 bg-white/5 text-accent-light text-[12px] font-semibold uppercase tracking-eyebrow mb-6">
               South Florida Mortgage Broker · Since 2010
             </div>
 
             <h1 className="font-display text-[42px] md:text-[56px] xl:text-[64px] leading-[1.04] tracking-[-0.02em] mb-6">
               Higher expectations.<br />
-              <span className="text-accent">Competitive rates.</span><br />
+              <span className="text-accent">Competitive mortgage rates.</span><br />
               Zero time wasted.
             </h1>
 
@@ -55,16 +66,9 @@ export function Hero() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1 text-accent">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <p className="text-[14px] text-white/60 leading-snug">
-                <span className="text-white font-semibold">5.0 rating</span> · 10,000+ closings since 2010
-              </p>
-            </div>
+            <p className="text-[14px] text-white/60 leading-snug">
+              <span className="text-white font-semibold">10,000+ closings</span> since 2010
+            </p>
           </motion.div>
 
           {/* Right — glass stat card */}
@@ -75,7 +79,7 @@ export function Hero() {
             className="relative"
           >
             <div className="rounded-lg bg-white/[0.06] border border-white/10 backdrop-blur-sm p-6 md:p-8 shadow-lift">
-              <p className="text-[12px] uppercase tracking-eyebrow text-accent font-semibold mb-6">
+              <p className="text-[12px] uppercase tracking-eyebrow text-accent-light font-semibold mb-6">
                 Why borrowers choose us
               </p>
               <div className="space-y-5">
@@ -86,7 +90,7 @@ export function Hero() {
                 ].map((item) => (
                   <div key={item.stat} className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-md bg-accent/15 border border-accent/25 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-accent" />
+                      <item.icon className="w-6 h-6 text-accent-light" />
                     </div>
                     <div>
                       <p className="text-[20px] font-bold leading-tight">{item.stat}</p>
