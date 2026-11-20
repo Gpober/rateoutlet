@@ -11,9 +11,9 @@
   --border: #E4E8ED;
   --primary: #0A2540;
   --primary-hover: #06192E;
-  --accent: #C6A15B;
-  --accent-hover: #AC863E;
-  --accent-soft: #F6EFDF;
+  --accent: #EC2029;
+  --accent-hover: #C9151D;
+  --accent-soft: #FDECEC;
   --success: #15803D;
 
   --radius-sm: 8px;
@@ -64,7 +64,7 @@
   }
   /* Gold CTA — the hero highlight */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-accent text-primary font-semibold text-sm hover:bg-accent-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-gold;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-gold;
   }
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-pill border border-primary/25 text-primary font-semibold text-sm hover:border-primary hover:bg-primary hover:text-white transition-all duration-200;

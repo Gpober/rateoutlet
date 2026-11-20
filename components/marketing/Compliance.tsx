@@ -41,7 +41,7 @@ export function ComplianceBlock() {
         <p className="text-[12px] text-white/60 leading-[1.6]">
           <strong className="text-white/85">
             {SITE.name} ·{' '}
-            <NmlsLink className="text-accent hover:underline" />
+            <NmlsLink className="text-accent-light hover:underline" />
           </strong>{' '}
           · {SITE.regulator}.
         </p>
@@ -59,7 +59,7 @@ export function ComplianceBlock() {
             href={SITE.nmlsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:underline"
+            className="text-accent-light hover:underline"
           >
             NMLS Consumer Access
           </a>

@@ -41,7 +41,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill border border-accent/30 bg-white/5 text-accent text-[12px] font-semibold uppercase tracking-eyebrow mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill border border-accent/30 bg-white/5 text-accent-light text-[12px] font-semibold uppercase tracking-eyebrow mb-6">
               South Florida Mortgage Broker · Since 2010
             </div>
 
@@ -86,7 +86,7 @@ export function Hero() {
             className="relative"
           >
             <div className="rounded-lg bg-white/[0.06] border border-white/10 backdrop-blur-sm p-6 md:p-8 shadow-lift">
-              <p className="text-[12px] uppercase tracking-eyebrow text-accent font-semibold mb-6">
+              <p className="text-[12px] uppercase tracking-eyebrow text-accent-light font-semibold mb-6">
                 Why borrowers choose us
               </p>
               <div className="space-y-5">
@@ -97,7 +97,7 @@ export function Hero() {
                 ].map((item) => (
                   <div key={item.stat} className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-md bg-accent/15 border border-accent/25 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-accent" />
+                      <item.icon className="w-6 h-6 text-accent-light" />
                     </div>
                     <div>
                       <p className="text-[20px] font-bold leading-tight">{item.stat}</p>

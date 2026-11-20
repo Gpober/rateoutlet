@@ -14,10 +14,11 @@ module.exports = {
           light: '#123A63',
         },
         accent: {
-          DEFAULT: '#C6A15B', // gold
-          hover: '#AC863E',
-          soft: '#F6EFDF',
-          deep: '#8A6D2E',
+          DEFAULT: '#EC2029', // the red in the rate/outlet logo
+          hover: '#C9151D',
+          soft: '#FDECEC',
+          deep: '#B5121A',
+          light: '#FF6B70', // small red text on navy, for contrast
         },
         section: {
           muted: '#F6F7F9',
@@ -39,7 +40,7 @@ module.exports = {
       boxShadow: {
         card: '0 4px 24px rgba(10, 37, 64, 0.06)',
         lift: '0 18px 50px rgba(10, 37, 64, 0.14)',
-        gold: '0 10px 30px rgba(198, 161, 91, 0.28)',
+        gold: '0 10px 30px rgba(236, 32, 41, 0.28)',
       },
       maxWidth: {
         container: '1200px',

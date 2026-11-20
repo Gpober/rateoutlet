@@ -18,13 +18,8 @@ const COMPANY_LINKS = [
 ]
 
 function Wordmark({ className }: { className?: string }) {
-  return (
-    <span className={className}>
-      <span className="text-white">The </span>
-      <span className="text-accent">Rate</span>
-      <span className="text-white"> Outlet</span>
-    </span>
-  )
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/logo-white.svg" alt="The Rate Outlet" className={className} />
 }
 
 export function Footer() {
@@ -35,7 +30,7 @@ export function Footer() {
         <div className="container-main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <Wordmark className="text-[19px] font-bold block mb-3" />
+            <Wordmark className="h-9 w-auto block mb-4" />
             <p className="text-[13px] leading-[1.7] text-white/60 mb-5">
               South Florida&apos;s mortgage broker since {SITE.founded}. We shop dozens of
               lenders so you don&apos;t have to — and pass the savings to you.
@@ -46,7 +41,7 @@ export function Footer() {
                   key={i}
                   href="#"
                   aria-label="Social link"
-                  className="w-9 h-9 border border-white/15 rounded-md flex items-center justify-center text-white/60 hover:text-primary hover:bg-accent hover:border-accent transition-colors"
+                  className="w-9 h-9 border border-white/15 rounded-md flex items-center justify-center text-white/60 hover:text-white hover:bg-accent hover:border-accent transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -56,7 +51,7 @@ export function Footer() {
 
           {/* Loans */}
           <div>
-            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent mb-4">Loans</p>
+            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent-light mb-4">Loans</p>
             <ul className="space-y-2.5">
               {LOAN_LINKS.map((l) => (
                 <li key={l.label}>
@@ -70,7 +65,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent mb-4">Company</p>
+            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent-light mb-4">Company</p>
             <ul className="space-y-2.5">
               {COMPANY_LINKS.map((l) => (
                 <li key={l.label}>
@@ -84,22 +79,22 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent mb-4">Contact</p>
+            <p className="text-[12px] uppercase tracking-eyebrow font-semibold text-accent-light mb-4">Contact</p>
             <ul className="space-y-3">
               <li>
                 <a href={SITE.phoneHref} className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors">
-                  <Phone className="w-4 h-4 flex-shrink-0 text-accent" />
+                  <Phone className="w-4 h-4 flex-shrink-0 text-accent-light" />
                   {SITE.phone}
                 </a>
               </li>
               <li>
                 <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors break-all">
-                  <Mail className="w-4 h-4 flex-shrink-0 text-accent" />
+                  <Mail className="w-4 h-4 flex-shrink-0 text-accent-light" />
                   {SITE.email}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-[14px] text-white/60">
-                <Clock className="w-4 h-4 flex-shrink-0 text-accent" />
+                <Clock className="w-4 h-4 flex-shrink-0 text-accent-light" />
                 {SITE.hours}
               </li>
             </ul>
