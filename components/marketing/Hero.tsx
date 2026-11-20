@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Star, Clock, TrendingDown, ShieldCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -9,6 +10,16 @@ const ease = [0.22, 1, 0.36, 1] as const
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-white">
+      {/* The South Florida coastline from the original therateoutlet.com, under a navy wash */}
+      <Image
+        src="/images/hero-beach.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/55 pointer-events-none" />
       {/* Ambient gold glow */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-accent/15 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[420px] h-[420px] rounded-full bg-accent/10 blur-3xl pointer-events-none" />
@@ -36,7 +47,7 @@ export function Hero() {
 
             <h1 className="font-display text-[42px] md:text-[56px] xl:text-[64px] leading-[1.04] tracking-[-0.02em] mb-6">
               Higher expectations.<br />
-              <span className="text-accent">Competitive rates.</span><br />
+              <span className="text-accent">Competitive mortgage rates.</span><br />
               Zero time wasted.
             </h1>
 

@@ -4,23 +4,23 @@ import { Reveal } from './Reveal'
 const FEATURES = [
   {
     icon: Handshake,
-    title: 'A broker, not a bank',
-    body: 'Banks sell one rate — theirs. We shop dozens of lenders and bring you the winner.',
+    title: 'Interest rates',
+    body: 'We are The Rate Outlet. A broker, not a bank — we shop dozens of lenders so your rate is picked for you, not for us.',
   },
   {
     icon: Zap,
-    title: 'Genuinely fast',
-    body: '24-hour approvals and closings in as little as 14 days. No black holes, no runaround.',
-  },
-  {
-    icon: PiggyBank,
-    title: 'Zero hidden fees',
-    body: 'Transparent pricing from the first call. What we quote is what you sign.',
+    title: 'Fast closings',
+    body: 'Average closings in 14 to 21 days, while many lenders take 60 to 90 days on a simple purchase or refinance.',
   },
   {
     icon: HeartHandshake,
-    title: 'One point of contact',
-    body: 'A dedicated broker from application to keys — a real person who answers the phone.',
+    title: 'Our 24-hour rule',
+    body: 'We are always available to you: 24-hour approvals, same-day responses, and daily rate updates on your loan.',
+  },
+  {
+    icon: PiggyBank,
+    title: 'Closing clarity',
+    body: 'No hidden fees. We make your costs clear up front — sleep well the night before your closing.',
   },
 ]
 

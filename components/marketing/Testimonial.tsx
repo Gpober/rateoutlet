@@ -13,13 +13,13 @@ export function Testimonial() {
             ))}
           </div>
           <blockquote className="font-display text-[24px] md:text-[30px] leading-[1.35] tracking-[-0.01em] text-primary mb-8">
-            “They found us a rate a full point below what our bank offered, explained every
-            number, and closed in under three weeks. It genuinely felt like they were on our
-            side the whole way.”
+            “I tried to refinance twice before working with Gonzalo. No one could come close to
+            his rate and deal. He is very professional and very willing to work with you. Would
+            happily do business with him again.”
           </blockquote>
           <div>
             <p className="text-[16px] font-semibold text-primary">Kate Schadler</p>
-            <p className="text-[14px] text-ui-muted">Homeowner · Fort Lauderdale, FL</p>
+            <p className="text-[14px] text-ui-muted">Miami, FL</p>
           </div>
         </Reveal>
       </div>
