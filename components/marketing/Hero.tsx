@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Star, Clock, TrendingDown, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Clock, TrendingDown, ShieldCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -66,16 +66,9 @@ export function Hero() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1 text-accent">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <p className="text-[14px] text-white/60 leading-snug">
-                <span className="text-white font-semibold">5.0 rating</span> · 10,000+ closings since 2010
-              </p>
-            </div>
+            <p className="text-[14px] text-white/60 leading-snug">
+              <span className="text-white font-semibold">10,000+ closings</span> since 2010
+            </p>
           </motion.div>
 
           {/* Right — glass stat card */}

@@ -61,7 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               foundingDate: String(SITE.founded),
               areaServed: 'South Florida',
               identifier: { '@type': 'PropertyValue', name: 'NMLS', value: SITE.nmls },
-              aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: '10000' },
             }),
           }}
         />

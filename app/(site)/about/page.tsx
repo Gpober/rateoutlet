@@ -56,7 +56,7 @@ export default function AboutPage() {
               {[
                 { value: '10,000+', label: 'Families financed' },
                 { value: '15 yrs', label: 'In business' },
-                { value: '5.0★', label: 'Average rating' },
+                { value: 'Dozens', label: 'Of lenders shopped' },
                 { value: '14 days', label: 'Fastest close' },
               ].map((s) => (
                 <div key={s.label} className="card p-6 text-center">
