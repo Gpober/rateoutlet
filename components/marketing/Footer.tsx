@@ -119,6 +119,8 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link href="/contact" className="hover:text-white/70 transition-colors">Contact</Link>
             <span className="text-white/20">·</span>
+            <Link href="/privacy-policy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
+            <span className="text-white/20">·</span>
             <NmlsLink className="hover:text-white/70 transition-colors" />
           </div>
         </div>
